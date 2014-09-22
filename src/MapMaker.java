@@ -1,30 +1,38 @@
+/*
+ * The purpose of this class is to create and print a map of islands, which is 
+ * a 2d boolean array.  True signifies island, false sea.  The map is created
+ * randomly.
+ */
+
 import java.util.Random;
 
 public class MapMaker {
     
-    private static final int worldSize = 5;
+    private int worldSize;
     boolean[][] map;
     Random rand = new Random();
     
+    public MapMaker(int size) {
+        worldSize = size;
+    }
+    
+    /**
+     * Creates a 2d boolean array and fills it randomly with true or false.
+     * @return boolean, the map array.
+     */
     public boolean[][] makeMap() {
         map = new boolean[worldSize][worldSize];
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map.length; j++) {
                 map[i][j] = rand.nextBoolean();
-//                map[0][0] = true;
-//                map[0][1] = false;
-//                map[0][2] = true;
-//                map[1][0] = false;
-//                map[1][1] = false;
-//                map[1][2] = false;
-//                map[2][0] = false;
-//                map[2][1] = false;
-//                map[2][2] = false;
             }
         }
         return map;
     }
     
+    /**
+     * Prints the map array. 1's for true, empty space for false.  
+     */
     public void printMap() {
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map.length; j++) {
@@ -34,7 +42,7 @@ public class MapMaker {
                 if (map[i][j]) {
                     System.out.print("1");
                 } else {
-                    System.out.print("0");
+                    System.out.print(" ");
                 }
             }
         }
