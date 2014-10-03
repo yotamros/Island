@@ -11,7 +11,7 @@ public class MapMaker {
     private int worldSize;
     boolean[][] map;
     Random rand = new Random();
-    
+    private double density = 2;
     public MapMaker(int size) {
         worldSize = size;
     }
@@ -24,7 +24,9 @@ public class MapMaker {
         map = new boolean[worldSize][worldSize];
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map.length; j++) {
-                map[i][j] = rand.nextBoolean();
+                if (new Random().nextDouble() <= density/10) {
+                    map[i][j] = true;
+                }
             }
         }
         return map;
@@ -42,7 +44,7 @@ public class MapMaker {
                 if (map[i][j]) {
                     System.out.print("1");
                 } else {
-                    System.out.print(" ");
+                    System.out.print("0");
                 }
             }
         }

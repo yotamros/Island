@@ -28,7 +28,7 @@ public class Island {
      * are islands too.  
      * @return NumOfIslands, int, the number of islands in the map.
      */
-    private int findIsland() {
+    private int countIslands() {
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[0].length; j++) {
                 if (map[i][j]) {
@@ -38,7 +38,6 @@ public class Island {
                 }
             }
         }
-        System.out.println("there are " + numOfIslands + " islands.");
         return numOfIslands;
     }
 
@@ -111,6 +110,7 @@ public class Island {
     public static void main(String[] args) {
         Island island = new Island();
         island.createMap(MAP_SIZE);
-        island.findIsland();
+        int islandsCount = island.countIslands();
+        System.out.println("There are " + islandsCount + " islands.");
     }
 }
